@@ -10,14 +10,14 @@ count = count/2;
 for (g=1; g<=count; g++) {
 imageNumber=g;
 open(""+sourceDir+"bw"+imageNumber+".jpg");
-open(""+sourceDir+"red"+imageNumber+".jpg");
+open(""+sourceDir+"fluor"+imageNumber+".jpg");
 
-selectWindow("red"+imageNumber+".jpg");
+selectWindow("fluor"+imageNumber+".jpg");
 	run("8-bit Color", "number=256");
 
 selectWindow("bw"+imageNumber+".jpg");
 	run("8-bit");
-	run("Merge Channels...", "c1=red"+imageNumber+".jpg c4=bw"+imageNumber+".jpg create keep");
+	run("Merge Channels...", "c1=fluor"+imageNumber+".jpg c4=bw"+imageNumber+".jpg create keep");
 
 setTool("line");
 title = "Hello";
@@ -47,7 +47,7 @@ selectWindow("bw"+imageNumber+".jpg");
 	run("Crop");
 	run("Select None");
 
-selectWindow("red"+imageNumber+".jpg");
+selectWindow("fluor"+imageNumber+".jpg");
 	run("Rotate... ", "angle="+grad+" grid=1 interpolation=None keep");
 	makeSelection("polygon", z, w);
 	run("Crop");
@@ -56,7 +56,7 @@ selectWindow("red"+imageNumber+".jpg");
 selectWindow("bw"+imageNumber+".jpg");
 run("RGB Color");
 	
-selectWindow("red"+imageNumber+".jpg");
+selectWindow("fluor"+imageNumber+".jpg");
 run("RGB Color");
 	
 selectWindow("Composite");
